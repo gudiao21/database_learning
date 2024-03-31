@@ -1,0 +1,23 @@
+CREATE TABLE users (
+  id PRIMARY KEY DEFAULT nextval('serial'),
+  username VARCHAR(60),
+  email VARCHAR(100),
+  password VARCHAR(30),
+  las_login TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  is_admin BOOLEAN DEFAULT false,
+  create_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+)
+
+CREATE TABLE profiles (
+  id PRIMARY KEY DEFAULT nextval('serial'),
+  first_name VARCHAR(60),
+  last_name VARCHAR(60),
+  password VARCHAR(30),
+  birthdate DATE,
+  avatar_url VARCHAR(150),
+  user_id INT REFERENCES users(id),
+  create_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+)
+
